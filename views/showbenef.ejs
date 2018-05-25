@@ -60,8 +60,8 @@
    img {
   border-radius: 50%;
 }
-@media screen and (min-width: 330px) {  .mls {margin-left:10px;}   }
-@media screen and (max-width: 330px) {  .mls {margin-left:10px;}   }
+@media screen and (min-width: 330px) {  .mls {margin-left:0px;}   }
+@media screen and (max-width: 330px) {  .mls {margin-left:0px;}   }
 
  table {
     border-collapse: collapse;
@@ -125,7 +125,7 @@ p.two {
   
   <% clients.forEach(function(client) { %>
     <tr>
-    <td width=50 ><img src="/clients/img/img_avatar.png" alt="Avatar" style="width:123px;"> </td>
+    <td width=50 ><img src="/clients/img/img_avatar.png" alt="Avatar" style="width:123px;padding-top:20px;padding-bottom:20px"> </td>
     <td width=50><p style="margin-left:20px;margin-top:20px;color:white;font-family: Amiri;font-size:30px;text-transform: uppercase;"><%= client.prenombenef %></p><p style="color:white;font-family:amiri" class="text-center"><%= client.nombenef %></p>  </td>
     </tr>
 
@@ -138,11 +138,16 @@ p.two {
     <% }); %>
     
     </table>
-
-    <h4 style="color:white;font-family: Amiri;font-size:25px;"> Son histoire : </h4>
-    
-    <p class="one" style="color:white"> ma vie était normale. J'étais ouvrier dans le BTP, marié, 2 enfants, heureux. Puis je suis tombé dans la dépression suite à un ... </p>
-    <a href="#"> Voir plus </a>
+    <table>
+    <tr>
+      <td><h4 style="color:white;font-family: Amiri;font-size:25px;"> Son histoire : </h4></td>
+    </tr>
+    <tr>
+      <td><p style="color:white"> ma vie était normale. J'étais ouvrier dans le BTP, marié, 2 enfants, heureux. Puis je suis tombé dans la dépression suite à un ... </p><a href="#"> Voir plus </a>
+      </td>
+      
+    </tr>
+    </table>
 <br>
     <h4 style="color:white;font-family: Amiri;font-size:25px;"> Ses compétences : </h4>
     <table>
@@ -161,8 +166,8 @@ p.two {
         <th><p class="two">VETEMENTS </p></th>
       </tr>
     </table>
-
-     <a href="/faireundon2" class="button" >FAIRE UN DON</a> 
+    <br>
+     <center> <a href="/faireundon2" class="button" >FAIRE UN DON</a> </center>
        
     </div>
    
