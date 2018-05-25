@@ -1,0 +1,22 @@
+ <table>
+	 
+	  <% clients.forEach(function(client) { %>
+		<tr>
+			<td width=30><%= client.id %> </td>
+			<td width=100><%= client.nom %> </td>
+			<td width=100><%= client.adresse %> </td>
+			<td width=100><%= client.prenom %> </td>
+			<td width=100><%= client.email %> </td>
+			<td width=100><%= client.motdepasse %> </td>
+			<td width=100><%= client.numerocarte %> </td>
+			<td>
+				<form style="display:inline" action="/clients/voir/<%=client.id%>">
+				 <input type="submit" value="Voir" />
+				</form>
+			</td>
+		</tr>
+
+	 <% }); %>
+		 
+	 </table>
+	

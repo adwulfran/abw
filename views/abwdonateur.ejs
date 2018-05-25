@@ -1,0 +1,140 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Wire One' rel='stylesheet'>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border: 0;
+      background-color: #F27272;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 600px; background-color : #F27272;};
+    
+    /* Set gray background color and 100% height */
+    
+    /* Set black background color, white text and some padding */
+    
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      
+      .row.content {height:500px;} 
+    }
+
+
+    .button {
+    background-color: white;
+    border: none;
+    color: #EB5757;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    width : 260px;
+}
+
+  .button2 {
+    background-color: #EB5757;
+    border-style: solid;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    width : 230px;
+}
+
+  .btw { 
+    font-family: Wire One;
+
+   }
+  </style>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+     
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid text-center">    
+  <div class="row content">
+   
+    <div class="col-sm-10 text-center"> 
+      <h1 style="color:white;font-family:'Wire One';font-size:64px;text-align: center;">Better World</h1>
+      
+      <hr style="width:73px">
+      
+      <br></br>
+      
+        <p><h1 style="color:white;" class="text-left" >Donateur</h1><p>
+        <form action="/abetterworld/donateur/profil">
+         <p><input type="text" name="email"  class="button" placeholder="Email" ></p>
+         <p><input class="button" placeholder="Mot de passe" ></p>
+         <p><input  type="text" name="motdepasse" class="button" placeholder="Confirmer le mot de passe"></p> 
+         <p><input type="submit" value="Valider" class="button2" /></p>
+       </form>      
+        
+     <span class="alert"></span>
+       
+    </div>
+   
+  </div>
+</div>
+
+<footer class="container-fluid text-center;" style="background-color: #F27272;">
+
+</footer>
+<script>
+$( "form" ).submit(function( event ) {
+
+  var check = $( ".col-sm-10 > form:nth-child(8) > p:nth-child(1) > input:nth-child(1)" ).val();
+  if ( check.search('@') !== -1 ) { var wrong = "different passwords !" } else { var wrong = "invalid e-mail address!"}
+  console.log(check);
+// 2EME CONDITION
+
+  if ( $( ".col-sm-10 > form:nth-child(8) > p:nth-child(2) > input:nth-child(1)" ).val() === $( ".col-sm-10 > form:nth-child(8) > p:nth-child(3) > input:nth-child(1)").val() && check.search('@') !== -1 ) {
+    $( "span" ).text( "Validated..." ).show();
+    return;
+  }
+ 
+
+  $( "span.alert" ).text( wrong).show().fadeOut( 1000 );
+  event.preventDefault();
+});
+</script>
+</body>
+</html>

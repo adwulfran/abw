@@ -1,0 +1,177 @@
+
+
+
+
+
+
+   <!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <link href='https://fonts.googleapis.com/css?family=Wire One' rel='stylesheet'>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border: 0;
+      background-color: #F27272;
+    }
+    
+    /* Set height of the grid so .sidenav can be 100% (adjust as needed) */
+    .row.content {height: 680px; background-color : #F27272;};
+    
+    /* Set gray background color and 100% height */
+    
+    /* Set black background color, white text and some padding */
+    
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      
+      .row.content {height:1500px;} 
+    }
+
+
+    .button {
+    background-color: white;
+    border: none;
+    color: #EB5757;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 30px;
+    width : 220px;
+}
+
+  .btw { 
+    font-family: Wire One;
+
+   }
+
+   img {
+  border-radius: 50%;
+}
+@media screen and (min-width: 330px) {  .mls {margin-left:10px;}   }
+@media screen and (max-width: 330px) {  .mls {margin-left:10px;}   }
+
+ table {
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th, td {
+    border-bottom: 1px solid #ddd;
+}
+ 
+p.one {
+    border-style: solid;
+    border-width: medium;
+    border-color: white;
+}
+
+p.two {
+    border-style: solid;
+    border-width: medium;
+    border-color: #F27272;
+    background-color: white;
+    color: #F27272;
+    text-align: center;
+}
+  </style>
+
+</head>
+<body>
+
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <h1 style="color:white;font-family:'Wire One';font-size:50px;text-align: center;">Better World
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      </h1>
+      <br>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+     
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+  
+<div class="container-fluid ">    
+  <div class="row content">
+   
+    <div class="col-sm-10 "> 
+      
+      
+
+          
+       
+         <table class="mls">
+  
+  <% clients.forEach(function(client) { %>
+    <tr>
+    <td width=50 ><img src="/clients/img/img_avatar.png" alt="Avatar" style="width:123px;"> </td>
+    <td width=50><p style="margin-left:20px;margin-top:20px;color:white;font-family: Amiri;font-size:30px;text-transform: uppercase;"><%= client.prenombenef %></p><p style="color:white;font-family:amiri" class="text-center"><%= client.nombenef %></p>  </td>
+    </tr>
+
+    <tr>
+    <td width=100 ><p style="color:white;font-family: Amiri;font-size:16px;">Dans la rue depuis </p></td>
+    <td width=100 ><p style="margin-left:20px;color:white;font-family: andada;font-size:18px;"><%= client.danslarue %> </p></td>
+    </tr>
+   
+
+    <% }); %>
+    
+    </table>
+
+    <h4 style="color:white;font-family: Amiri;font-size:25px;"> Son histoire : </h4>
+    
+    <p class="one" style="color:white"> ma vie était normale. J'étais ouvrier dans le BTP, marié, 2 enfants, heureux. Puis je suis tombé dans la dépression suite à un ... </p>
+    <a href="#"> Voir plus </a>
+<br>
+    <h4 style="color:white;font-family: Amiri;font-size:25px;"> Ses compétences : </h4>
+    <table>
+      <tr>
+        <th> <p class="two">Compta</p> </th>
+        <th><p class="two">BTP </p></th>
+        <th><p class="two"> CAP Patisserie </p></th>
+      </tr>
+    </table>
+
+    <h4 style="color:white;font-family: Amiri;font-size:25px;"> Ses besoins : </h4>
+    <table>
+      <tr>
+        <th> <p class="two">JOB</p> </th>
+        <th><p class="two">DOUCHE</p></th>
+        <th><p class="two">VETEMENTS </p></th>
+      </tr>
+    </table>
+
+     <a href="/faireundon2" class="button" >FAIRE UN DON</a> 
+       
+    </div>
+   
+  </div>
+</div>
+
+<footer class="container-fluid text-center;" style="background-color: #F27272;">
+
+</footer>
+
+</body>
+</html>
