@@ -126,7 +126,7 @@ p.two {
   <% clients.forEach(function(client) { %>
     <tr>
     <td width=50 ><img src="/clients/img/img_avatar.png" alt="Avatar" style="width:123px;padding-top:20px;padding-bottom:20px"> </td>
-    <td width=50><p style="margin-left:20px;margin-top:20px;color:white;font-family: Amiri;font-size:30px;text-transform: uppercase;"><%= client.prenombenef %></p><p style="color:white;font-family:amiri" class="text-center"><%= client.nombenef %></p>  </td>
+    <td width=50><p style="margin-left:20px;margin-top:20px;color:white;font-family: Amiri;font-size:24px;text-transform: uppercase;"><%= client.prenombenef %></p><p style="color:white;font-family:amiri" class="text-center"><%= client.nombenef %></p>  </td>
     </tr>
 
     <tr>
@@ -135,7 +135,7 @@ p.two {
     </tr>
    
 
-    <% }); %>
+   
     
     </table>
     <table>
@@ -143,10 +143,11 @@ p.two {
       <td><h4 style="color:white;font-family: Amiri;font-size:25px;"> Son histoire : </h4></td>
     </tr>
     <tr>
-      <td><p style="color:white"> ma vie était normale. J'étais ouvrier dans le BTP, marié, 2 enfants, heureux. Puis je suis tombé dans la dépression suite à un ... </p><a href="#"> Voir plus </a>
+      <td><p style="color:white"> <%= client.mystory %> </p><a href="#"> Voir plus </a>
       </td>
       
     </tr>
+    <% }); %>
     </table>
 <br>
     <h4 style="color:white;font-family: Amiri;font-size:25px;"> Ses compétences : </h4>
