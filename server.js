@@ -195,7 +195,8 @@ Client.update({ nombenef : nom}, {  mystory : mystory }, { multi : true },functi
 });
 app.get("/clients/voirprofil/", function(req, res) { 
 	var email = req.session.urltk[0];
-	Client.find({email:email}, function(err, clients) { 
+	var motdepasse = req.session.urltk2[0];
+	Client.find({$and : [ { email  : email } , { motdepasse : motdepasse} ]}, function(err, clients) { 
 		res.render("show.ejs", { clients : clients });
 	})		
 })
