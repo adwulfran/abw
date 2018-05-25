@@ -110,9 +110,9 @@ app.get("/abetterworld/donateur/profil/:id?", function(req, res) {
 app.get("/abetterworld/beneficiaire/profil/:id?", function(req, res) { 
 	var id = req.params.id; 
 	var nom = req.param("nom");// fs.writeFileSync("nom.txt", nom);// remplacer writeFileSync par req.session
-	var nom = req.session.urltk.push(nom); 
+	var nom = req.session.urltk3.push(nom); 
 	var prenom = req.param("prenom"); //fs.writeFileSync("prenom.txt", prenom);// idem
-	var prenom = req.session.urltk2.push(prenom);
+	var prenom = req.session.urltk4.push(prenom);
 	res.redirect("/abetterworld/beneficiaire/informations/");			
 })
 
@@ -141,7 +141,7 @@ app.get("/abetterworld/donateur/informations/update/:id?", function(req, res) {
 app.get("/abetterworld/beneficiaire/informations/update/:id?", function(req, res) { 
 	var id = req.params.id;
 	//var nom = fs.readFileSync("nom.txt").toString(); var prenom = fs.readFileSync("prenom.txt").toString();
-	var nom = req.session.urltk[0]; var prenom = req.session.urltk2[0];
+	var nom = req.session.urltk3[0]; var prenom = req.session.urltk4[0];
 	var motdepasse = req.param("motdepasse");
 	var asso = req.param("asso");
 	var danslarue = req.param("itss");
@@ -183,7 +183,7 @@ Client.update({ email : email}, { numerocarte : numerocarte }, { multi : true },
 app.get("/abw/mystory/update/:id?", function(req, res) { 
 
 	var mystory = req.param("mystory");
-var nom = req.session.urltk[0];	
+var nom = req.session.urltk3[0];	
 Client.update({ nombenef : nom}, {  mystory : mystory }, { multi : true },function(err, numberAffected) { 
 	Client.find({nombenef : nom}, function(err, clients) { 
 
