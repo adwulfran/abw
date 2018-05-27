@@ -21,11 +21,15 @@ app.use(session({
 	saveUninitialized: true,
 	cookie : { maxAge : 60000*3 }
 }))
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser');
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+  extended: true
+})); 
 var server = require('http').Server(app);
 var io = require('socket.io')(server);
 /* premier message : c'est pour la branche experimental  */
-server.listen(8181); /* OU app.set('port', process.env.PORT || 8181); */
+server.listen(80); /* OU app.set('port', process.env.PORT || 8181); */
 
 mongoose.connect("mongodb://localhost/clients");
 
@@ -85,7 +89,7 @@ app.use(function (req, res, next) {
 app.use(cookieParser())
 
 
-app.get("/abetterworld", function(req, res) { 
+app.get("/", function(req, res) { 
 	res.render("abetterworld.ejs");
 })
 
@@ -141,11 +145,14 @@ app.get("/abetterworld/donateur/informations/update/:id?", function(req, res) {
 app.get("/abetterworld/beneficiaire/informations/update/:id?", function(req, res) { 
 	var id = req.params.id;
 	//var nom = fs.readFileSync("nom.txt").toString(); var prenom = fs.readFileSync("prenom.txt").toString();
-	var nom = req.session.urltk3[0]; var prenom = req.session.urltk4[0];
+	var nom = req.session.urltk3[0]; 
+	var prenom = req.session.urltk4[0];
+	nvprenom = prenom+Math.floor(Math.random() * 100); 
+	req.session.urltk4.unshift(nvprenom);
 	var motdepasse = req.param("motdepasse");
 	var asso = req.param("asso");
 	var danslarue = req.param("itss");
-	Client.create({nombenef : nom , motdepasse : motdepasse, prenombenef : prenom, asso : asso, danslarue : danslarue }, function(err, client) { 
+	Client.create({nombenef : nom , motdepasse : motdepasse, prenombenef : nvprenom, asso : asso, danslarue : danslarue }, function(err, client) { 
 		res.redirect("/abw/mystory/");
 		console.log(client)
 	})	
@@ -165,9 +172,9 @@ app.get("/abw/mystory/", function(req, res) {
 })
 
 
-app.get("/abw/carte/update/:id?", function(req, res) { 
+app.post("/abw/carte/update/:id?", function(req, res) { 
 
-	var numerocarte = req.param("numerocarte");
+	var numerocarte = req.body.numerocarte;
 var email = req.session.urltk[0];	
 Client.update({ email : email}, { numerocarte : numerocarte }, { multi : true },function(err, numberAffected) { 
 	Client.find({email : email}, function(err, clients) { 
@@ -180,15 +187,16 @@ Client.update({ email : email}, { numerocarte : numerocarte }, { multi : true },
 });
 
 
-app.get("/abw/mystory/update/:id?", function(req, res) { 
+app.post("/abw/mystory/update/:id?", function(req, res) { 
 
-	var mystory = req.param("mystory");
-var nom = req.session.urltk3[0];	
-Client.update({ nombenef : nom}, {  mystory : mystory }, { multi : true },function(err, numberAffected) { 
-	Client.find({nombenef : nom}, function(err, clients) { 
+	var mystory = req.body.mystory; 
+var nom = req.session.urltk3[0]; var prenom = req.session.urltk4[0];	
+//if (!mystory) { res.redirect("/abetterworld/");}
+Client.update({ prenombenef : prenom}, {  mystory : mystory }, { multi : true },function(err, numberAffected) { 
+	Client.find({prenombenef : prenom}, function(err, clients) { 
 
 		console.log(clients);
-		res.render("showbenef.ejs", { clients : clients });
+		res.render("showbenef1.ejs", { clients : clients });
 
 	});
 });
@@ -196,6 +204,7 @@ Client.update({ nombenef : nom}, {  mystory : mystory }, { multi : true },functi
 app.get("/clients/voirprofil/", function(req, res) { 
 	var email = req.session.urltk[0];
 	var motdepasse = req.session.urltk2[0];
+	if (!email) { res.redirect("/");}
 	Client.find({$and : [ { email  : email } , { motdepasse : motdepasse} ]}, function(err, clients) { 
 		res.render("show.ejs", { clients : clients });
 	})		

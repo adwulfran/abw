@@ -45,7 +45,7 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 30px;
-    width : 280px;
+    width : 230px;
 }
 
   .button2 {
@@ -60,7 +60,7 @@
     margin: 4px 2px;
     cursor: pointer;
     border-radius: 30px;
-    width : 280px;
+    width : 230px;
 }
 
   .btw { 
@@ -84,7 +84,7 @@
     <div class="collapse navbar-collapse" id="myNavbar">
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a><p> <a href="/abetterworld">retour</a></p></li>
       </ul>
     </div>
   </div>
@@ -107,7 +107,7 @@
           
          <p><input type="submit" value="Valider" class="button2" /></p>
        </form>      
-        
+         <span class="alert"></span>
      
        
     </div>
@@ -118,6 +118,23 @@
 <footer class="container-fluid text-center;" style="background-color: #F27272;">
 
 </footer>
+<script>
+$( "form" ).submit(function( event ) {
 
+  var check = $( ".col-sm-10 > form:nth-child(8) > p:nth-child(1) > input:nth-child(1)" ).val();
+  if ( check.length < 3 ) { var wrong = "minimum 3 lettres !" } 
+  console.log(check);
+// 2EME CONDITION
+
+  if ( check.length  > 2  ) {
+    $( "span" ).text( "Validated..." ).show();
+    return;
+  }
+ 
+
+  $( "span.alert" ).text( wrong).show().fadeOut( 1000 );
+  event.preventDefault();
+});
+</script>
 </body>
 </html>

@@ -86,6 +86,71 @@ p.two {
     color: #F27272;
     text-align: center;
 }
+
+/* button dropdown */
+
+  .dropbtn {
+    background-color: #F27272;
+    color: white;
+    padding: 5px 9px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 0px;
+    width : 200px;
+}
+
+/*
+.dropbtn:hover, .dropbtn:focus {
+  background-color: white;
+}
+*/
+.dropdown {
+    
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #F27272;
+    color: white;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown a:hover {background-color: #ddd}
+
+.show {display:block;}
+
+/* css down arrow*/
+i {
+  border: solid white;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 5px;
+  margin-left: 55px;
+}
+
+.down {
+    transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+}
+
   </style>
 
 </head>
@@ -106,7 +171,7 @@ p.two {
     <div class="collapse navbar-collapse" id="myNavbar">
      
       <ul class="nav navbar-nav navbar-right">
-        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a></li>
+        <li><a href="#" style="color:white"><span class="glyphicon glyphicon-log-in"></span> Se connecter</a><p style="color:white;margin-left:35px"> <a href="/" style="color:inherit;text-decoration: none;">Retour</a></p></li>
       </ul>
     </div>
   </div>
@@ -121,17 +186,25 @@ p.two {
       <br>
       <h3 class="text-center"> Faire un don </h3>
       <hr style="color:black">
-      Montant :
+      <center>Montant : </center>
      <center><input class="center" style="background-color:#F27272;color:white;font-size:20px;width:200px" placeholder="1€">  </input></center>
      <br>
-     Moyen de paiement
-     <center><input class="center" style="background-color:#F27272;color:white;font-size:20px;width:200px" placeholder="XXXX XXXX XXXX XXXX">  </input></center>
-      <center><button class="center" style="background-color:#F27272;color:white;font-size:20px;width:200px">LYDIA  </button></center>
-      <center><button class="center" style="background-color:#F27272;color:white;font-size:20px;width:200px">Itunes / Android  </button></center>
+     <center>Moyen de Paiement </center>
+      <center> <button onclick="myFunction()" class="dropbtn"> Lydia     <i class="down"></i></button></center>
+          <div id="myDropdown" class="dropdown-content">
+            <a href="#home" id="mcd">Lydia</a>
+            <a href="#about" id="vsa">Itunes / Android</a>
+            <a href="#about" id="cte">Carte XXXX XXXX XXXX XXXX</a>
+            <a href="#about" id="fb">Facebook</a>
+          </div> 
+
+
+     
+    
 
     <br></br>
     <center><img src="/clients/img/img_avatar.png" style="width:123px;height:116px"></center>
-    <center><h2 style="color:black"> PAUL </h2></center>
+    <center><h2 style="color:black"> Antoine25 </h2></center>
     </div>
 
 
@@ -147,6 +220,48 @@ p.two {
 <footer class="container-fluid text-center;" style="background-color: #F27272;">
 
 </footer>
+<script>
+/* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+    document.getElementById("myDropdown").classList.toggle("show");
+}
 
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+</script>
+
+<script>
+$(document).ready(function(){
+$('#mcd').click(function(){ 
+  $('.dropbtn').html('Lydia');
+  })
+
+$('#vsa').click(function(){ 
+  $('.dropbtn').html('Itunes/Android');
+  })
+
+$('#cte').click(function(){ 
+  $('.dropbtn').html('Carte XXXX XXXX XXXX XXXX');
+  })
+
+$('#fb').click(function(){ 
+  $('.dropbtn').html('Facebook');
+  })
+
+})
+</script>
 </body>
 </html>
