@@ -93,14 +93,19 @@ app.get("/", function(req, res) {
 	res.render("abetterworld.ejs");
 })
 
+var routes = require("./routes.js");
+routes(app);
+
+/*
 app.get("/abetterworld/donateur", function(req, res) { 
 	res.render("abwdonateur.ejs");
 })
-
+*/
 app.get("/abetterworld/beneficiaire", function(req, res) { 
 	res.render("abwbenef.ejs");
 })
 
+/*
 app.get("/abetterworld/donateur/profil/:id?", function(req, res) { 
 	var id = req.params.id; 
 	var email = req.param("email"); req.session.urltk.push(email);
@@ -108,7 +113,7 @@ app.get("/abetterworld/donateur/profil/:id?", function(req, res) {
 	console.log(req.session.urltk[0]); console.log(req.session.urltk2[0]);
 	res.redirect("/abetterworld/donateur/informations/");			
 })
-
+*/
 
 // PARTIE BENEFICIAIRE PAS TERMINE
 app.get("/abetterworld/beneficiaire/profil/:id?", function(req, res) { 
